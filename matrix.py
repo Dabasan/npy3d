@@ -27,7 +27,7 @@ class Matrix(object):
     @classmethod
     def from_ndarray(cls,arr:np.ndarray)->Matrix:
         if arr.shape!=(4,4):
-            message="Expected (4,4) array but got {}.".format(arr.shape)
+            message="Expected shape (4,4) but got {}.".format(arr.shape)
             raise ValueError(message)
 
         ret=Matrix()
