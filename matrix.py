@@ -3,6 +3,7 @@
 """
 
 import numpy as np
+import math
 
 class Matrix(object):
     """
@@ -185,4 +186,3 @@ class Matrix(object):
         ret.set(3,3,1.0)
 
         return ret
-    
