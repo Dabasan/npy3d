@@ -32,29 +32,26 @@ class Vector(object):
         z=-math.sin(angle_h)
         size=math.sqrt(x*x+y*y+z*z)
 
-        ret=Vector()
-        ret.set(x,y,z)
-
-        return ret
+        return Vector((x,y,z))
     @classmethod
     def from_vector(cls,v:Vector)->Vector:
-        ret=Vector()
-        ret.set(v.get_x(),v.get_y(),v.get_z())
-
-        return ret
+        return Vector((v.get_x(),v.get_y(),v.get_z()))
     @classmethod
     def from_ndarray(cls,arr:np.ndarray)->Vector:
-        if arr.shape!=(3,1):
-            message="Expected (3,1) but got {}.".format(arr.shape)
+        if arr.shape!=(3,1) and arr.shape!=(4,1):
+            message="Expected shape (3,1) or (4,1) but got {}.".format(arr.shape)
             raise ValueError(message)
 
-        ret=Vector()
-        ret.set(arr[0,0],arr[1,0],arr[2,0])
-
-        return ret
+        return Vector((arr[0,0],arr[1,0],arr[2,0]))
 
     def __str__(self):
         return "({},{},{})".format(self.v[0,0],self.v[1,0],self.v[2,0])
+
+    def get_ndarray(self):
+        """
+        Returns the underlying ndarray instance.
+        """
+        return self.v
 
     def get(self)->Tuple[float,float,float]:
         return self.v[0,0],self.v[1,0],self.v[2,0]
