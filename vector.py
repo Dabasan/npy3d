@@ -39,7 +39,7 @@ class Vector(object):
     @classmethod
     def from_ndarray(cls,arr:np.ndarray)->"Vector":
         if arr.shape!=(3,1) and arr.shape!=(4,1):
-            message="Expected shape (3,1) or (4,1) but got {}.".format(arr.shape)
+            message="Expected shape (3, 1) or (4, 1) but got {}.".format(arr.shape)
             raise ValueError(message)
 
         return Vector((arr[0,0],arr[1,0],arr[2,0]))
@@ -105,6 +105,12 @@ class Vector(object):
         x=self.get_x()-v.get_x()
         y=self.get_y()-v.get_y()
         z=self.get_z()-v.get_z()
+
+        return Vector((x,y,z))
+    def scale(self,scale:float)->"Vector":
+        x=self.get_x()*scale
+        y=self.get_y()*scale
+        z=self.get_z()*scale
 
         return Vector((x,y,z))
     def cross(self,v:"Vector")->"Vector":
