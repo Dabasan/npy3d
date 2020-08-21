@@ -18,7 +18,7 @@ class Matrix(object):
             self.m=np.full((4,4),fill_value)
 
     @classmethod
-    def from_matrix(cls,matrix:Matrix)->Matrix:
+    def from_matrix(cls,matrix:"Matrix")->"Matrix":
         ret=Matrix()
         for i in range(4):
             for j in range(4):
@@ -26,7 +26,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def from_ndarray(cls,arr:np.ndarray)->Matrix:
+    def from_ndarray(cls,arr:np.ndarray)->"Matrix":
         if arr.shape!=(4,4):
             message="Expected shape (4,4) but got {}.".format(arr.shape)
             raise ValueError(message)
@@ -62,7 +62,7 @@ class Matrix(object):
     def set(self,row:int,col:int,value:float):
         self.m[row,col]=value
 
-    def add(self,mat:Matrix)->Matrix:
+    def add(self,mat:"Matrix")->"Matrix":
         ret=Matrix()
         for i in range(4):
             for j in range(4):
@@ -72,7 +72,7 @@ class Matrix(object):
                 ret.set(i,j,v1+v2)
         
         return ret
-    def sub(self,mat:Matrix)->Matrix:
+    def sub(self,mat:"Matrix")->"Matrix":
         ret=Matrix()
         for i in range(4):
             for j in range(4):
@@ -82,34 +82,34 @@ class Matrix(object):
                 ret.set(i,j,v1-v2)
         
         return ret
-    def mult(self,mat:Matrix)->Matrix:
+    def mult(self,mat:"Matrix")->"Matrix":
         mult_arr=np.matmul(self.m,mat.m)
         return Matrix.from_ndarray(mult_arr)
 
-    def transpose(self)->Matrix:
+    def transpose(self)->"Matrix":
         ret=Matrix()
         for i in range(4):
             for j in range(4):
                 ret.set(i,j,self.m[j,i])
 
         return ret
-    def invert(self)->Matrix:
+    def invert(self)->"Matrix":
         inv_arr=np.linalg.inv(self.m)
         return Matrix.from_ndarray(inv_arr)
 
     @classmethod
-    def identity(cls)->Matrix:
+    def identity(cls)->"Matrix":
         ret=Matrix(0.0)
         for i in range(4):
             ret.set(i,i,1.0)
 
         return ret
     @classmethod
-    def random(cls)->Matrix:
+    def random(cls)->"Matrix":
         rand_arr=np.random.rand(4,4)
         return Matrix.from_ndarray(rand_arr)
     @classmethod
-    def translaion(cls,translation_x:float,translation_y:float,translation_z:float)->Matrix:
+    def translaion(cls,translation_x:float,translation_y:float,translation_z:float)->"Matrix":
         ret=Matrix(0.0)
         ret.set(0,0,1.0)
         ret.set(0,3,translation_x)
@@ -121,7 +121,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def scaling(cls,scale_x:float,scale_y:float,scale_z:float)->Matrix:
+    def scaling(cls,scale_x:float,scale_y:float,scale_z:float)->"Matrix":
         ret=Matrix(0.0)
         ret.set(0,0,scale_x)
         ret.set(1,1,scale_y)
@@ -130,7 +130,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def rotation_x(cls,th:float)->Matrix:
+    def rotation_x(cls,th:float)->"Matrix":
         ret=Matrix(0.0)
         ret.set(0, 0, 1.0)
         ret.set(1,1,math.cos(th))
@@ -141,7 +141,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def rotation_y(cls,th:float)->Matrix:
+    def rotation_y(cls,th:float)->"Matrix":
         ret=Matrix(0.0)
         ret.set(0,0,math.cos(th))
         ret.set(0,2,math.sin(th))
@@ -152,7 +152,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def rotation_z(cls,th:float)->Matrix:
+    def rotation_z(cls,th:float)->"Matrix":
         ret=Matrix(0.0)
         ret.set(0,0,math.cos(th))
         ret.set(0,1,-math.sin(th))
@@ -163,7 +163,7 @@ class Matrix(object):
 
         return ret
     @classmethod
-    def rotation(cls,axis_x:float,axis_y:float,axis_z:float,th:float)->Matrix:
+    def rotation(cls,axis_x:float,axis_y:float,axis_z:float,th:float)->"Matrix":
         cos_th=math.cos(th)
         sin_th=math.sin(th)
         
