@@ -68,8 +68,29 @@ class MatrixTest(unittest.TestCase):
         #print(invert)
 
     def test_identity(self):
-        identity=Matrix.identity()
-        #print(identity)
+        m=Matrix.identity()
+        #print(m)
+    def test_random(self):
+        m=Matrix.random()
+        #print(m)
+    def test_translation(self):
+        m=Matrix.translaion(1.0,-2.5,4.0)
+        #print(m)
+    def test_scaling(self):
+        m=Matrix.scaling(2.0,-3.0,4.0)
+        #print(m)
+    def test_rotation_x(self):
+        m=Matrix.rotation_x(math.pi/4.0)
+        #print(m)
+    def test_rotation_y(self):
+        m=Matrix.rotation_y(math.pi/4.0)
+        #print(m)
+    def test_rotation_z(self):
+        m=Matrix.rotation_z(math.pi/4.0)
+        #print(m)
+    def test_rotation(self):
+        m=Matrix.rotation(1.0,1.0,1.0,math.pi/4.0)
+        #print(m)
 
 if __name__=="__main__":
     unittest.main()
