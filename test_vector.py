@@ -113,12 +113,44 @@ class VectorTest(unittest.TestCase):
         actual=v.get_angle_v()
 
         self.assertAlmostEqual(expected,actual,delta=1.0e-3)
+    def test_get_angle_h(self):
+        expected=-math.pi/4.0
+        v=Vector((1.0,1.0,1.0))
+        actual=v.get_angle_h()
+
+        self.assertAlmostEqual(expected,actual,delta=1.0e-3)
 
     def test_transform(self):
         v=Vector((2.0,3.0,4.0))
         transformed=v.transform(Matrix.translaion(1.0,2.0,3.0))
 
         #print(transformed)
+    def test_transform_sr(self):
+        v=Vector((2.0,3.0,4.0))
+        transformed=v.transform(Matrix.scaling(1.0,2.0,3.0))
+
+        #print(transformed)
+
+    def test_rot_x(self):
+        v=Vector((2.0,3.0,4.0))
+        rotated=v.rot_x(math.pi/4.0)
+
+        #print(rotated)
+    def test_rot_y(self):
+        v=Vector((2.0,3.0,4.0))
+        rotated=v.rot_y(math.pi/4.0)
+
+        #print(rotated)
+    def test_rot_z(self):
+        v=Vector((2.0,3.0,4.0))
+        rotated=v.rot_z(math.pi/4.0)
+
+        #print(rotated)
+    def test_rot(self):
+        v=Vector((2.0,3.0,4.0))
+        rotated=v.rot(1.0,1.0,1.0,math.pi/4.0)
+
+        #print(rotated)
 
 if __name__=="__main__":
     unittest.main()
