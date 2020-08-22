@@ -2,6 +2,7 @@ import unittest
 import numpy as np
 import math
 from vector import Vector
+from matrix import Matrix
 
 class VectorTest(unittest.TestCase):
     def setUp(self):
@@ -41,13 +42,13 @@ class VectorTest(unittest.TestCase):
         v=Vector((1.0,1.0,1.0))
         actual=v.get_square_size()
 
-        self.assertAlmostEqual(expected,actual,1.0e-6)
+        self.assertAlmostEqual(expected,actual,delta=1.0e-6)
     def test_get_size(self):
         expected=math.sqrt(3.0)
         v=Vector((1.0,1.0,1.0))
         actual=v.get_size()
 
-        self.assertAlmostEqual(expected,actual,1.0e-6)
+        self.assertAlmostEqual(expected,actual,delta=1.0e-6)
 
     def test_normalize(self):
         expected=(0.57735,0.57735,0.57735)
@@ -65,9 +66,9 @@ class VectorTest(unittest.TestCase):
         v2=Vector((4.0,7.0,-2.0))
         add=v1.add(v2)
         
-        self.assertAlmostEqual(expected[0],add.get_x(),1.0e-6)
-        self.assertAlmostEqual(expected[1],add.get_y(),1.0e-6)
-        self.assertAlmostEqual(expected[2],add.get_z(),1.0e-6)
+        self.assertAlmostEqual(expected[0],add.get_x(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[1],add.get_y(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[2],add.get_z(),delta=1.0e-6)
     def test_sub(self):
         expected=(-3.0,-5.0,5.0)
 
@@ -75,18 +76,18 @@ class VectorTest(unittest.TestCase):
         v2=Vector((4.0,7.0,-2.0))
         add=v1.sub(v2)
         
-        self.assertAlmostEqual(expected[0],add.get_x(),1.0e-6)
-        self.assertAlmostEqual(expected[1],add.get_y(),1.0e-6)
-        self.assertAlmostEqual(expected[2],add.get_z(),1.0e-6)
+        self.assertAlmostEqual(expected[0],add.get_x(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[1],add.get_y(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[2],add.get_z(),delta=1.0e-6)
     def test_scale(self):
         expected=(2.0,3.0,4.0)
 
         v=Vector((1.0,1.5,2.0))
         scale=v.scale(2.0)
 
-        self.assertAlmostEqual(expected[0],scale.get_x(),1.0e-6)
-        self.assertAlmostEqual(expected[1],scale.get_y(),1.0e-6)
-        self.assertAlmostEqual(expected[2],scale.get_z(),1.0e-6)
+        self.assertAlmostEqual(expected[0],scale.get_x(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[1],scale.get_y(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[2],scale.get_z(),delta=1.0e-6)
     def test_cross(self):
         expected=(13.0,-12.0,9.0)
 
@@ -94,9 +95,9 @@ class VectorTest(unittest.TestCase):
         v2=Vector((3.0,7.0,5.0))
         cross=v1.cross(v2)
 
-        self.assertAlmostEqual(expected[0],cross.get_x(),1.0e-6)
-        self.assertAlmostEqual(expected[1],cross.get_y(),1.0e-6)
-        self.assertAlmostEqual(expected[2],cross.get_z(),1.0e-6)
+        self.assertAlmostEqual(expected[0],cross.get_x(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[1],cross.get_y(),delta=1.0e-6)
+        self.assertAlmostEqual(expected[2],cross.get_z(),delta=1.0e-6)
     def test_dot(self):
         expected=42.0
 
@@ -104,7 +105,20 @@ class VectorTest(unittest.TestCase):
         v2=Vector((3.0,7.0,5.0))
         actual=v1.dot(v2)
 
-        self.assertAlmostEqual(expected,actual,1.0e-6)
+        self.assertAlmostEqual(expected,actual,delta=1.0e-6)
+
+    def test_get_angle_v(self):
+        expected=0.61548
+        v=Vector((1.0,1.0,1.0))
+        actual=v.get_angle_v()
+
+        self.assertAlmostEqual(expected,actual,delta=1.0e-3)
+
+    def test_transform(self):
+        v=Vector((2.0,3.0,4.0))
+        transformed=v.transform(Matrix.translaion(1.0,2.0,3.0))
+
+        #print(transformed)
 
 if __name__=="__main__":
     unittest.main()
