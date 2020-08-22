@@ -1,6 +1,10 @@
 import unittest
 import numpy as np
 import math
+
+import sys
+import os
+sys.path.append(os.path.abspath(".."))
 from vector import Vector
 from matrix import Matrix
 
