@@ -136,15 +136,15 @@ class Vector(object):
         return x1*x2+y1*y2+z1*z2
 
     def get_angle_v(self)->float:
-        xz_vec=Vector(self.get_x(),0.0,self.get_z())
+        xz_vec=Vector((self.get_x(),0.0,self.get_z()))
 
         cos_th=self.dot(xz_vec)/(self.get_size()*xz_vec.get_size())
         th=math.acos(cos_th)
 
         return th
     def get_angle_h(self)->float:
-        x_axis=Vector(init_values=(1.0,0.0,0.0))
-        xz_vec=Vector(init_values=(self.get_x(),0.0,self.get_z()))
+        x_axis=Vector((1.0,0.0,0.0))
+        xz_vec=Vector((self.get_x(),0.0,self.get_z()))
 
         cos_th=xz_vec.dot(x_axis)/xz_vec.get_size()
         th=math.acos(cos_th)
