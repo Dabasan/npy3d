@@ -5,6 +5,9 @@ import numpy as np
 import math
 from typing import Tuple
 
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from matrix import Matrix
 
 class Vector(object):
