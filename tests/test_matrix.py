@@ -4,7 +4,7 @@ import math
 
 import sys
 import os
-sys.path.append(os.path.abspath(".."))
+sys.path.append(os.path.abspath("../src/npy3d"))
 from matrix import Matrix
 
 class MatrixTest(unittest.TestCase):
