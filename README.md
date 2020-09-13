@@ -1,4 +1,6 @@
 # npy3d
 
-A Python library for 3D vector and matrix operations
+3D操作に必要なベクトルや行列の演算を行うことができます。
+
+
 
