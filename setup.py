@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="npy3d",
-    version="0.0.1",
+    version="0.0.1-rc1",
     author="Hirotsugu Daba",
     description="A Python library for 3D vector and matrix operations",
     long_description=long_description,
